@@ -1,0 +1,66 @@
+﻿@model  IEnumerable<Expense.Models.Item>
+
+@{
+    ViewBag.Title = "Items";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Items</h2>
+<p>
+    <div style="float:left">
+        @Html.ActionLink("New Item", "New", "Items", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Expense Report", "Chart", "Items", null, new { @class = "btn btn-warning" })
+    </div>
+    <div style="float:right">
+
+        @using (Html.BeginForm("Filter", "Items"))
+        {
+            <div>
+
+                @Html.TextBox("SearchString", null, new { @class = "form-control ", style = "width:auto;display:inline;", placeholder = "Search" })
+                <input type="submit" value="Filter" class="btn btn-info " />
+
+
+
+            </div>
+        }
+
+    </div>
+
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ItemId</th>
+            <th>ItemName</th>
+            <th>Amount</th>
+            <th>ExpenseDate</th>
+            <th>Category</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Id</td>
+                <td>@Html.ActionLink(item.Name, "Edit", "Items", new { id = item.Id }, null)</td>
+                <td>$@item.Amount</td>
+                <td>
+                    @item.ExpenseDate.Value.ToShortDateString()
+                </td>
+                <td>@item.CategoryType.Name</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Items", new { id = item.Id }, new { @class = "btn btn-primary" })
+
+                    @Html.ActionLink("Delete", "Delete", "Items", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FirstApp.Models.Item>
+
+@{
+    ViewBag.Title = "Chart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chart</h2>
+<p>
+    @{
+        double foodExpense = 0;
+        double shoppingExpense = 0;
+        double travelExpense = 0;
+        double healthExpense = 0;
+
+        var item1 = from m in Model
+                    where m.CategoryTypeId == 1
+                    where m.ExpenseDate > DateTime.Now.AddMonths(-6)
+                    select m;
+
+
+        foreach (var a in item1)
+        {
+            foodExpense += a.Amount;
+        }
+
+        var item2 = from m in Model
+                    where m.CategoryTypeId == 2
+                    where m.ExpenseDate > DateTime.Now.AddMonths(-6)
+                    select m;
+
+
+        foreach (var a in item2)
+        {
+            shoppingExpense += a.Amount;
+        }
+
+        var item3 = from m in Model
+                    where m.CategoryTypeId == 3
+                    where m.ExpenseDate > DateTime.Now.AddMonths(-6)
+                    select m;
+
+
+        foreach (var a in item3)
+        {
+            travelExpense += a.Amount;
+        }
+
+        var item4 = from m in Model
+                    where m.CategoryTypeId == 4
+                    where m.ExpenseDate > DateTime.Now.AddMonths(-6)
+                    select m;
+
+
+        foreach (var a in item4)
+        {
+            healthExpense += a.Amount;
+        }
+
+
+
+
+
+
+        var myChart = new Chart(width: 600, height: 400)
+    .AddTitle("Expense Report")
+    .AddSeries(
+    name: "Expense in last six month is",
+    xValue: new[] { "Food", "shopping", "Travel", "Health" },
+    yValues: new[] { foodExpense, shoppingExpense, travelExpense, healthExpense })
+    .Write();
+
+    }
+
+</p>

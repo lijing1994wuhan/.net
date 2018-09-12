@@ -1,0 +1,27 @@
+﻿@model Expense.ViewModels.ItemFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+<h2>@Model.Title</h2>
+@using (Html.BeginForm("Save", "Items"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.Name)
+        @Html.TextBoxFor(m => m.Item.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.ExpenseDate)
+        @Html.TextBoxFor(m => m.Item.ExpenseDate, "{0:d}", new { @class = "form-control", placeholder = "yyyy/mm/dd" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.CategoryTypeId)
+        @Html.DropDownListFor(m => m.Item.CategoryTypeId, new SelectList(Model.CategoryTypes, "Id", "Name"), "Select Category", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.Amount)
+        @Html.TextBoxFor(m => m.Item.Amount, new { @class = "form-control", placeholder = "0.00" })
+    </div>
+    @Html.HiddenFor(m => m.Item.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}

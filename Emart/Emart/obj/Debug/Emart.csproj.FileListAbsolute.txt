@@ -1,0 +1,7 @@
+C:\Users\菁\source\repos\Emart\Emart\bin\Debug\Emart.exe.config
+C:\Users\菁\source\repos\Emart\Emart\bin\Debug\Emart.exe
+C:\Users\菁\source\repos\Emart\Emart\bin\Debug\Emart.pdb
+C:\Users\菁\source\repos\Emart\Emart\obj\Debug\Emart.csprojAssemblyReference.cache
+C:\Users\菁\source\repos\Emart\Emart\obj\Debug\Emart.csproj.CoreCompileInputs.cache
+C:\Users\菁\source\repos\Emart\Emart\obj\Debug\Emart.exe
+C:\Users\菁\source\repos\Emart\Emart\obj\Debug\Emart.pdb
